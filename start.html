@@ -23,25 +23,35 @@
         height: 100%;
         cursor: pointer;
       }
-      #sound-hint {
+
+      /* 🔊 Centered Enable Sound Button */
+      #sound-btn {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.15);
         color: white;
-        font-size: 20px;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 12px 20px;
+        border: 2px solid white;
         border-radius: 12px;
-        text-align: center;
+        font-size: 20px;
+        padding: 14px 28px;
+        cursor: pointer;
         z-index: 999;
-        transition: opacity 0.6s ease;
+        transition: all 0.6s ease;
+      }
+      #sound-btn:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      #sound-btn.hide {
+        opacity: 0;
+        pointer-events: none;
       }
     </style>
   </head>
   <body>
-    <!-- 🔊 Tap-to-enable sound hint -->
-    <div id="sound-hint">🔊 Tap anywhere to enable fireworks sound!</div>
+    <!-- 🔊 Button to enable sound -->
+    <button id="sound-btn">🎵 Enable Fireworks Sound</button>
 
     <!-- 🔥 Fireworks sound -->
     <audio id="fireworks-sound" loop>
@@ -54,26 +64,19 @@
 
     <script>
       const sound = document.getElementById("fireworks-sound");
-      const hint = document.getElementById("sound-hint");
+      const btn = document.getElementById("sound-btn");
 
-      // Enable sound after first user tap
-      function enableSound() {
+      // Play sound when user clicks the button
+      btn.addEventListener("click", () => {
         sound.play().then(() => {
-          hint.style.opacity = "0";
-          setTimeout(() => (hint.style.display = "none"), 600);
+          btn.classList.add("hide");
+          setTimeout(() => (btn.style.display = "none"), 600);
         }).catch((err) => {
-          console.log("Autoplay blocked:", err);
+          console.log("Sound play blocked:", err);
         });
+      });
 
-        // remove listener after first interaction
-        document.removeEventListener("click", enableSound);
-        document.removeEventListener("touchstart", enableSound);
-      }
-
-      document.addEventListener("click", enableSound);
-      document.addEventListener("touchstart", enableSound);
-
-      // Redirect after 30 seconds
+      // Redirect after 30s
       setTimeout(() => (location.href = "Birthday.html"), 30000);
 
       const canvas = document.getElementById("canvas");
