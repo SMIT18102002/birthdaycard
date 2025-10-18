@@ -23,26 +23,49 @@
         height: 100%;
         cursor: pointer;
       }
+      #sound-hint {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 20px;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 12px 20px;
+        border-radius: 12px;
+        text-align: center;
+        z-index: 999;
+        transition: opacity 0.6s ease;
+      }
     </style>
   </head>
   <body>
-    <div style="visibility: hidden">
-      <audio id="fireworks-sound" loop autoplay>
-        <source src="fireworks.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-    </div>
+    <!-- 🔊 Tap-to-enable sound hint -->
+    <div id="sound-hint">🔊 Tap anywhere to enable fireworks sound!</div>
 
+    <!-- 🔥 Fireworks sound -->
+    <audio id="fireworks-sound" loop>
+      <source src="fireworks.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- 🎇 Fireworks Canvas -->
     <canvas id="canvas">Canvas not supported in your browser.</canvas>
 
     <script>
       const sound = document.getElementById("fireworks-sound");
-      // Try to play when the user first interacts
+      const hint = document.getElementById("sound-hint");
+
+      // Enable sound after first user tap
       function enableSound() {
-        sound.play().catch((err) => {
+        sound.play().then(() => {
+          hint.style.opacity = "0";
+          setTimeout(() => (hint.style.display = "none"), 600);
+        }).catch((err) => {
           console.log("Autoplay blocked:", err);
         });
-        // remove listener after first play
+
+        // remove listener after first interaction
         document.removeEventListener("click", enableSound);
         document.removeEventListener("touchstart", enableSound);
       }
@@ -50,19 +73,19 @@
       document.addEventListener("click", enableSound);
       document.addEventListener("touchstart", enableSound);
 
-      // Redirect after 20s
+      // Redirect after 30 seconds
       setTimeout(() => (location.href = "Birthday.html"), 30000);
 
       const canvas = document.getElementById("canvas");
       const ctx = canvas.getContext("2d");
 
-      // Function to make canvas always fill window
+      // Make canvas fill window
       function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       }
       window.addEventListener("resize", resizeCanvas);
-      resizeCanvas(); // run once on load
+      resizeCanvas();
 
       let fireworks = [];
       let particles = [];
@@ -258,4 +281,3 @@
     </script>
   </body>
 </html>
-
