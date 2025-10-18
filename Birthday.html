@@ -1,0 +1,348 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      @import url(https://fonts.googleapis.com/css?family=Nobile:400italic,700italic);
+      @import url(https://fonts.googleapis.com/css?family=Dancing+Script);
+      * {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+      }
+      body {
+        background: #e5e5e5;
+        background-image: url("bg.jpg");
+        padding: 50px;
+        background-origin: content-box;
+        background-repeat: no-repeat;
+        background-size: 1550px 721px;
+        overflow-y: hidden;
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 20px;
+          overflow-y: hidden;
+          padding: 20px;
+          background-size: 375px 650px;
+        }
+      }
+      /* @media (max-width: 768px) {
+        body {
+          padding: 20px;
+          overflow-y: hidden;
+          padding: 20px;
+          background-size: 775px 623px;
+        }
+      } */
+
+      #card-front {
+        color: #ffdfdf;
+      }
+
+      #card,
+      #card-front,
+      #card-inside {
+        height: 480px;
+        min-height: 50vh;
+      }
+
+      .wrap {
+        padding: 1.5em 2.5em;
+        height: 100%;
+      }
+      #card-front,
+      #card-inside {
+        width: 50%;
+        -webkit-box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.25),
+          0 0 1px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.25),
+          0 0 1px rgba(0, 0, 0, 0.5);
+        box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.5);
+        position: absolute;
+        left: 50%;
+      }
+
+      @media (max-width: 768px) {
+        #card-front,
+        #card-inside {
+          width: 100%;
+          left: 0;
+        }
+        .wrap {
+          font-size: 15px;
+          padding: 1.3em 2.3em;
+        }
+      }
+
+      #card-inside .wrap {
+        background: #ffefef;
+        -webkit-box-shadow: inset 2px 0 1px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 2px 0 1px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 2px 0 1px rgba(0, 0, 0, 0.05);
+      }
+      #card {
+        max-width: 960px;
+        margin: 0 auto;
+        transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        perspective: 5000px;
+        -moz-perspective: 5000px;
+        -webkit-perspective: 5000px;
+        position: relative;
+      }
+
+      @media (max-width: 768px) {
+        #card {
+          max-width: 100%;
+          top: 11%;
+        }
+      }
+
+      #card h1 {
+        text-align: center;
+        font-family: "Nobile", sans-serif;
+        font-style: italic;
+        font-size: 70px;
+        text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15),
+          1px 1px 0 rgba(255, 200, 200, 255), 2px 2px 0 rgba(255, 150, 150, 255),
+          3px 3px 0 rgba(255, 125, 125, 255);
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
+        #card h1 {
+          font-size: 45px;
+          position: absolute;
+          left: 50%;
+          top: 40%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      @media (max-width: 480px) {
+        #card h1 {
+          position: absolute;
+          left: 50%;
+          top: 45%;
+          transform: translate(-50%, -50%);
+          font-family: "poppins", sans-serif;
+          font-size: 2.6rem;
+          color: #fff1e6;
+          -webkit-text-stroke: 2px #b388eb;
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+      }
+      #card-inside {
+        font-size: 1.1em;
+        line-height: 1.4;
+        font-family: "Nobile";
+        color: #331717;
+        font-style: italic;
+      }
+
+      p {
+        margin-top: 1em;
+      }
+
+      p:first-child {
+        margin-top: 0;
+      }
+
+      p.signed {
+        margin-top: -11px;
+        text-align: center;
+        font-family: "Dancing Script", sans-serif;
+        font-size: 1.5em;
+      }
+
+      #card-front {
+        background-color: #ff5555;
+        background-image: linear-gradient(top, #ff5555 0%, #ff7777 100%);
+        background-image: -moz-linear-gradient(top, #ff5555 0%, #ff7777 100%);
+        background-image: -webkit-linear-gradient(
+          top,
+          #ff6f61 0%,
+          #89cff0 100%
+        );
+        transform-origin: left;
+        -moz-transform-origin: left;
+        -webkit-transform-origin: left;
+        transition: transform 1s linear;
+        -moz-transition: -moz-transform 1s linear;
+        -webkit-transition: -webkit-transform 1s linear;
+        position: relative;
+      }
+
+      #card-front .wrap {
+        transition: background 1s linear;
+        -moz-transition: background 1s linear;
+        -webkit-transition: background 1s linear;
+      }
+
+      #card-front button {
+        position: absolute;
+        bottom: 1em;
+        right: -12px;
+        background: #f44;
+        color: #fff;
+        font-family: "Nobile", sans-serif;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 1.5em;
+        padding: 0.5em;
+        border: none;
+        cursor: pointer;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25),
+          0 0 1px rgba(0, 0, 0, 0.4);
+        -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25),
+          0 0 1px rgba(0, 0, 0, 0.4);
+      }
+
+      @media (max-width: 768px) {
+      }
+
+      #card-front button:hover,
+      #card-front button:focus {
+        background: #f22;
+      }
+
+      #close {
+        display: none;
+      }
+
+      #card.open-fully #close,
+      #card-open-half #close {
+        display: inline;
+      }
+
+      #card.open-fully #open {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        #card.open-half #card-front,
+        #card.close-half #card-front {
+          transform: none;
+          -moz-transform: none;
+          -webkit-transform: none;
+        }
+        #card.open-fully #close,
+        #card-open-half #close {
+          display: inline;
+          position: absolute;
+          right: 88%;
+        }
+      }
+
+      #card.open-half #card-front,
+      #card.close-half #card-front {
+        transform: rotateY(-90deg);
+        -moz-transform: rotateY(-90deg);
+        -webkit-transform: rotateY(-90deg);
+      }
+      #card.open-half #card-front .wrap {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      #card.open-fully #card-front,
+      #card.close-half #card-front {
+        background: #ffefef;
+      }
+
+      #card.open-fully #card-front {
+        transform: rotateY(-180deg);
+        -moz-transform: rotateY(-180deg);
+        -webkit-transform: rotateY(-180deg);
+      }
+
+      #card.open-fully #card-front .wrap {
+        background-color: rgba(0, 0, 0, 0);
+        /* background-image: url('2.jpg'); */
+      }
+
+      #card.open-fully #card-front .wrap *,
+      #card.close-half #card-front .wrap * {
+        display: none;
+      }
+
+      footer {
+        max-width: 500px;
+        margin: 40px auto;
+        font-family: "Nobile", sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #888;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="card">
+      <div id="card-inside">
+        <div class="wrap">
+          <p>Hey, Dear Bestie 💖</p>
+          <p>
+            A wish for you on your birthday: Whatever you ask-may you receive.
+            Whatever you seek-may you find. Whatever you wish-may it be
+            fulfilled, today and always.
+          </p>
+          <p><b>Happy Birthday, Ayushi🎉</b></p>
+          <p>I’ll always be by your side whenever you need me.</p>
+          <p>Enjoy your day! Stay blessed, stay happy, and keep smiling 😊😁</p>
+
+          <center><h4>With lots of love,</h4></center>
+          <p class="signed">Your Oppa</p>
+        </div>
+      </div>
+      <div id="card-front">
+        <div class="wrap">
+          <h1>Happiest Birthday Ayu🥳🎂🎈</h1>
+        </div>
+        <button id="open">&gt;</button>
+        <button id="close">&lt;</button>
+      </div>
+    </div>
+    <script>
+      (function () {
+        function $(id) {
+          return document.getElementById(id);
+        }
+
+        var card = $("card"),
+          openB = $("open"),
+          closeB = $("close"),
+          timer = null;
+        console.log("wat", card);
+        openB.addEventListener("click", function () {
+          card.setAttribute("class", "open-half");
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(function () {
+            card.setAttribute("class", "open-fully");
+            timer = null;
+          }, 1000);
+        });
+
+        closeB.addEventListener("click", function () {
+          card.setAttribute("class", "close-half");
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(function () {
+            card.setAttribute("class", "");
+            timer = null;
+          }, 1000);
+        });
+      })();
+    </script>
+
+    <div style="visibility: hidden">
+      <audio src="birthday.mp3" autoplay loop hidden></audio>
+    </div>
+    
+  </body>
+</html>
